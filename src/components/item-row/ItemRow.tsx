@@ -22,6 +22,7 @@ const ItemRow: FunctionComponent<ItemRowProps> = ({
   state,
   content,
   taskId,
+  ...props
 }) => {
   const { theme } = useSelector((state: RootState) => state.theme);
   const dispatch = useDispatch();
@@ -42,6 +43,7 @@ const ItemRow: FunctionComponent<ItemRowProps> = ({
         [styles.itemRow__dark]: theme === THEME_DARK,
         [styles.itemRow__light]: theme === THEME_LIGHT,
       })}
+      {...props}
     >
       <button onClick={onClickCheckbox}>
         <Checkbox active={state === ITEM__STATUS_COMPLETED} />

@@ -1,12 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { TODO_THEME_LOCAL_STORATGE } from "../../constants/theme";
 import { TaskItem, TaskStatusType } from "../../typings/Task";
 import {
   ITEM__STATUS_COMPLETED,
   ITEM_STATUS_ACTIVE,
-  TODO_ITEMS_LOCAL_STORAGE,
 } from "../../constants/item";
+import updateTasksLocalStorage from "../../helpers/updateTasksLocalStorage";
 
 export interface TodoState {
   tasks: TaskItem[];
@@ -39,10 +38,6 @@ const updateTaskNumber = (
   };
 };
 
-const updateLocalStorage = (tasks: TaskItem[]) => {
-  window.localStorage.setItem(TODO_ITEMS_LOCAL_STORAGE, JSON.stringify(tasks));
-};
-
 export const todoSlice = createSlice({
   name: "todo",
   initialState,
@@ -55,7 +50,7 @@ export const todoSlice = createSlice({
       const newTaskList = [...state.tasks, action.payload];
       state.tasks = newTaskList;
       state.number = updateTaskNumber(newTaskList);
-      updateLocalStorage(newTaskList);
+      updateTasksLocalStorage(newTaskList);
     },
     deleteTask: (state, action: PayloadAction<string>) => {
       const newTaskList = state.tasks.filter(
@@ -63,7 +58,7 @@ export const todoSlice = createSlice({
       );
       state.tasks = newTaskList;
       state.number = updateTaskNumber(newTaskList);
-      updateLocalStorage(newTaskList);
+      updateTasksLocalStorage(newTaskList);
     },
     clearCompletedTasks: (state) => {
       const newTaskList = state.tasks.filter(
@@ -71,7 +66,7 @@ export const todoSlice = createSlice({
       );
       state.tasks = newTaskList;
       state.number = updateTaskNumber(newTaskList);
-      updateLocalStorage(newTaskList);
+      updateTasksLocalStorage(newTaskList);
     },
     markTaskCompleted: (state, action: PayloadAction<string>) => {
       const newTaskList = state.tasks.map((task: TaskItem) => {
@@ -85,7 +80,7 @@ export const todoSlice = createSlice({
       });
       state.tasks = newTaskList;
       state.number = updateTaskNumber(newTaskList);
-      updateLocalStorage(newTaskList);
+      updateTasksLocalStorage(newTaskList);
     },
   },
 });
