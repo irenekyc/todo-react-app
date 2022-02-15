@@ -1,0 +1,83 @@
+@import "../../variables.scss";
+
+.taskList {
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: -26px;
+  margin-bottom: 12px;
+  @include md-and-up {
+    margin-top: -50px;
+  }
+
+  &.lightTheme {
+    background: $white;
+    box-shadow: 4px 4px 12px rgba($black, 0.15);
+  }
+
+  &__settingsRow {
+    @include item-styles;
+    button,
+    span {
+      color: $theme-light-gray-3;
+      font-size: 14px;
+      font-family: inherit;
+    }
+
+    button {
+      @include theme-light-button-hover-styles;
+    }
+
+    @include md-and-up {
+      button,
+      span {
+        font-size: 14px;
+      }
+    }
+
+    &__outlineFilter {
+      .filterRow {
+        @include item-styles;
+        border-radius: 12px;
+        font-size: 16px;
+        justify-content: center;
+        box-shadow: 2px 2px 6px rgba($black, 0.05);
+      }
+      @include md-and-up {
+        display: none;
+      }
+    }
+
+    &__inlineFilter {
+      display: none;
+
+      @include md-and-up {
+        display: flex;
+        .filterRow {
+          width: 170px;
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+}
+
+.filterRow {
+  &__wrapper {
+    width: 170px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__button {
+    text-transform: capitalize;
+    color: $theme-light-gray-4;
+    font-size: 16px !important;
+    font-weight: 500;
+
+    &__active {
+      color: $primary-blue !important;
+    }
+  }
+}

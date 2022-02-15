@@ -1,0 +1,38 @@
+@import "../../variables.scss";
+
+.checkbox {
+  width: 22px;
+  height: 22px;
+  border-radius: 100%;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:after {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 100%;
+  }
+
+  &.light-theme {
+    background: $theme-light-gray-3;
+    &:hover {
+      background: $checkbox-bg;
+    }
+  }
+
+  &__active {
+    background: $checkbox-bg !important;
+    &:after {
+      display: none;
+    }
+  }
+}

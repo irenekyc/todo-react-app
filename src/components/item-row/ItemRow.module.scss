@@ -1,0 +1,34 @@
+@import "../../variables.scss";
+
+.itemRow {
+  @include item-styles;
+  border-bottom: 1px solid $theme-light-gray-2;
+  font-size: 14px;
+  cursor: pointer;
+
+  span {
+    margin: 0 10px;
+    flex: 1;
+    text-align: left;
+
+    &.cross {
+      text-decoration: line-through;
+      color: $theme-light-gray-3;
+    }
+  }
+
+  &__deleteButton {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease-in-out;
+  }
+
+  &:hover > .itemRow__deleteButton {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  @include md-and-up {
+    font-size: 18px;
+  }
+}

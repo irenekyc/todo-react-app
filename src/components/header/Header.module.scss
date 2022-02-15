@@ -1,0 +1,75 @@
+@import "../../variables.scss";
+
+.header {
+  height: 210px;
+  width: 100vw;
+  font-size: 16px;
+
+  &__row {
+    padding-top: 45px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+
+    h1 {
+      letter-spacing: 3px;
+      color: $white;
+      font-size: 24px;
+    }
+  }
+
+  @include md-and-up {
+    font-size: 18px;
+    height: 300px;
+
+    &__row {
+      padding-top: 70px;
+      margin-bottom: 45px;
+
+      h1 {
+        font-size: 40px;
+      }
+      svg {
+        height: 36px;
+      }
+    }
+  }
+
+  &__light {
+    background: url("../../assets/images/bg-mobile-light.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  &__taskInput {
+    @include item-styles;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 12px;
+    button {
+      margin-right: 12px;
+    }
+    input {
+      border: none;
+      outline: none;
+      flex: 1;
+
+      &::placeholder {
+        color: $theme-light-gray-4;
+        line-height: 22px;
+      }
+    }
+
+    @include md-and-up {
+      input {
+        font-size: 18px;
+      }
+
+      input::placeholder {
+        font-size: 16px;
+      }
+    }
+  }
+}
