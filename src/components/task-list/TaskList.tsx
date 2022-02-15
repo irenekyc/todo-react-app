@@ -54,9 +54,9 @@ const TaskList: FunctionComponent = () => {
   }, [currentFilter]);
 
   return (
-    <>
+    <div className={styles.darkTheme}>
       <Container>
-        <div className={classnames(styles.taskList, styles.lightTheme)}>
+        <div className={styles.taskList}>
           {tasks.map((task: TaskItem) => (
             <ItemRow key={task.id} state={task.state} content={task.content} />
           ))}
@@ -107,7 +107,7 @@ const TaskList: FunctionComponent = () => {
           </div>
         </div>
       </Container>
-    </>
+    </div>
   );
 };
 

@@ -41,23 +41,65 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+
+    .header__taskInput {
+      @include item-styles("light");
+      input {
+        color: $theme-light-gray-2;
+        &::placeholder {
+          color: $theme-light-gray-4;
+        }
+      }
+    }
+
+    @include md-and-up {
+      background: url("../../assets/images/bg-desktop-light.jpg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+  }
+
+  &__dark {
+    background: url("../../assets/images/bg-mobile-dark.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    .header__taskInput {
+      @include item-styles("dark");
+      input {
+        color: $theme-dark-text-dark;
+        &::placeholder {
+          color: $theme-dark-text-light;
+        }
+      }
+    }
+
+    @include md-and-up {
+      background: url("../../assets/images/bg-desktop-dark.jpg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
   }
 
   &__taskInput {
-    @include item-styles;
     justify-content: flex-start;
     align-items: center;
     border-radius: 12px;
-    button {
+    font-family: button {
       margin-right: 12px;
     }
     input {
       border: none;
       outline: none;
       flex: 1;
+      background: transparent;
+      font-family: "Josefin Sans", sans-serif;
+      padding-left: 12px;
 
       &::placeholder {
-        color: $theme-light-gray-4;
         line-height: 22px;
       }
     }

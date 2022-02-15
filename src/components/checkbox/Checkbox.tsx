@@ -14,7 +14,7 @@ const Checkbox: FunctionComponent<CheckboxProps> = ({
 }: CheckboxProps) => {
   return (
     <div
-      className={classnames(styles.checkbox, className, styles["light-theme"], {
+      className={classnames(styles.checkbox, className, styles["dark-theme"], {
         [styles.checkbox__active]: active,
       })}
     >

@@ -18,12 +18,24 @@
     transform: translate(-50%, -50%);
     width: 20px;
     height: 20px;
-    background: white;
     border-radius: 100%;
   }
 
   &.light-theme {
-    background: $theme-light-gray-3;
+    background: $theme-light-text-light;
+    &:after {
+      background: white;
+    }
+    &:hover {
+      background: $checkbox-bg;
+    }
+  }
+
+  &.dark-theme {
+    background: $theme-dark-text-light;
+    &:after {
+      background: $theme-dark-card-bg;
+    }
     &:hover {
       background: $checkbox-bg;
     }

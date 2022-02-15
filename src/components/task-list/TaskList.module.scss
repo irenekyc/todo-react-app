@@ -9,22 +9,11 @@
     margin-top: -50px;
   }
 
-  &.lightTheme {
-    background: $white;
-    box-shadow: 4px 4px 12px rgba($black, 0.15);
-  }
-
   &__settingsRow {
-    @include item-styles;
     button,
     span {
-      color: $theme-light-gray-3;
       font-size: 14px;
       font-family: inherit;
-    }
-
-    button {
-      @include theme-light-button-hover-styles;
     }
 
     @include md-and-up {
@@ -36,7 +25,6 @@
 
     &__outlineFilter {
       .filterRow {
-        @include item-styles;
         border-radius: 12px;
         font-size: 16px;
         justify-content: center;
@@ -78,6 +66,57 @@
 
     &__active {
       color: $primary-blue !important;
+    }
+  }
+}
+
+.lightTheme {
+  .taskList {
+    background: $theme-light-card-bg;
+    box-shadow: 4px 4px 12px rgba($black, 0.15);
+  }
+
+  .taskList__settingsRow {
+    @include item-styles("light");
+    button,
+    span {
+      color: $theme-light-text-light;
+    }
+
+    button {
+      @include theme-light-button-hover-styles;
+    }
+
+    &__outlineFilter {
+      .filterRow {
+        @include item-styles("light");
+        justify-content: center;
+      }
+    }
+  }
+}
+
+.darkTheme {
+  .taskList {
+    background: $theme-dark-card-bg;
+  }
+
+  .taskList__settingsRow {
+    @include item-styles("dark");
+
+    button,
+    span {
+      color: $theme-dark-text-light;
+    }
+
+    button {
+      @include theme-dark-button-hover-styles;
+    }
+  }
+  .taskList__settingsRow__outlineFilter {
+    .filterRow {
+      @include item-styles("dark");
+      justify-content: center;
     }
   }
 }

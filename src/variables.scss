@@ -17,14 +17,23 @@ $theme-light-gray-3: hsl(233, 11%, 84%);
 $theme-light-gray-4: hsl(236, 9%, 61%);
 $theme-light-gray-5: hsl(235, 19%, 35%);
 
+$theme-light-card-bg: $white;
+$theme-light-text-dark: $theme-light-gray-5;
+$theme-light-text-light: $theme-light-gray-3;
+
 // ### Dark Theme
-// - Very Dark Blue: hsl(235, 21%, 11%)
-// - Very Dark Desaturated Blue: hsl(235, 24%, 19%)
-// - Light Grayish Blue: hsl(234, 39%, 85%)
-// - Light Grayish Blue (hover): hsl(236, 33%, 92%)
-// - Dark Grayish Blue: hsl(234, 11%, 52%)
-// - Very Dark Grayish Blue: hsl(233, 14%, 35%)
-// - Very Dark Grayish Blue: hsl(237, 14%, 26%)
+
+$theme-dark-gray-1: hsl(234, 39%, 85%);
+$theme-dark-gray-2: hsl(236, 33%, 92%);
+$theme-dark-gray-3: hsl(234, 11%, 52%);
+$theme-dark-gray-4: hsl(233, 14%, 35%);
+$theme-dark-gray-5: hsl(235, 24%, 19%);
+$theme-dark-gray-6: hsl(235, 21%, 11%);
+$theme-dark-gray-7: hsl(237, 14%, 26%);
+
+$theme-dark-card-bg: $theme-dark-gray-5;
+$theme-dark-text-dark: $theme-dark-gray-2;
+$theme-dark-text-light: $theme-dark-gray-4;
 
 // Mixins
 @mixin md-and-up {
@@ -33,16 +42,27 @@ $theme-light-gray-5: hsl(235, 19%, 35%);
   }
 }
 
-@mixin item-styles {
+@mixin item-styles($theme) {
   padding: 16px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: $white;
+
+  @if $theme == "light" {
+    background: $theme-light-card-bg;
+  } @else {
+    background: $theme-dark-card-bg;
+  }
 }
 
 @mixin theme-light-button-hover-styles {
   &:hover {
-    color: $theme-light-gray-5;
+    color: $theme-light-text-dark;
+  }
+}
+
+@mixin theme-dark-button-hover-styles {
+  &:hover {
+    color: $theme-dark-gray-2;
   }
 }

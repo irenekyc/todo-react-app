@@ -15,7 +15,7 @@ interface ItemRowProps {
 
 const ItemRow: FunctionComponent<ItemRowProps> = ({ state, content }) => {
   return (
-    <div className={styles.itemRow}>
+    <div className={classnames(styles.itemRow, styles.itemRow__dark)}>
       <button>
         <Checkbox active={state === ITEM__STATUS_COMPLETED} />
       </button>

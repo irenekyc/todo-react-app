@@ -1,8 +1,24 @@
 @import "../../variables.scss";
 
 .itemRow {
-  @include item-styles;
-  border-bottom: 1px solid $theme-light-gray-2;
+  &__light {
+    @include item-styles("light");
+    color: $theme-light-text-dark;
+    border-bottom: 1px solid $theme-light-text-light;
+    .cross {
+      color: $theme-light-text-light;
+    }
+  }
+
+  &__dark {
+    @include item-styles("dark");
+    color: $theme-dark-text-dark;
+    .cross {
+      color: $theme-dark-text-light;
+    }
+    border-bottom: 1px solid $theme-dark-text-light;
+  }
+
   font-size: 14px;
   cursor: pointer;
 
@@ -13,7 +29,6 @@
 
     &.cross {
       text-decoration: line-through;
-      color: $theme-light-gray-3;
     }
   }
 

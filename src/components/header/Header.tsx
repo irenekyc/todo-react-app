@@ -2,8 +2,10 @@ import React, { FunctionComponent, useState, KeyboardEvent } from "react";
 import styles from "./Header.module.scss";
 import Container from "../container";
 import classnames from "classnames";
-import { MoonIcon } from "../icons";
+import { MoonIcon, SunIcon } from "../icons";
 import Checkbox from "../checkbox";
+
+let theme: "dark" | "light" = "dark";
 
 const Header: FunctionComponent = () => {
   const [newTask, setNewTask] = useState<string>("");
@@ -15,11 +17,20 @@ const Header: FunctionComponent = () => {
     }
   };
   return (
-    <div className={classnames(styles.header, styles.header__light)}>
+    <div
+      className={classnames(styles.header, {
+        [styles.header__dark]: theme === "dark",
+        [styles.header__light]: theme === "light",
+      })}
+    >
       <Container className={styles.header__row}>
         <h1>TODO</h1>
         <button>
-          <MoonIcon height="20" />
+          {theme === "dark" ? (
+            <SunIcon height="20" />
+          ) : (
+            <MoonIcon height="20" />
+          )}
         </button>
       </Container>
       <Container>
