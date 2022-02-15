@@ -10,6 +10,9 @@ import {
 } from "../../constants/item";
 import { FILTER_ALL, FITLER_LIST } from "../../constants/filter";
 import { FilterType } from "../../typings/Filter";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
+import { THEME_DARK, THEME_LIGHT } from "../../constants/theme";
 const tasksList: TaskItem[] = [
   {
     id: "abx-1",
@@ -42,7 +45,7 @@ const tasksList: TaskItem[] = [
 const TaskList: FunctionComponent = () => {
   const [currentFilter, setCurrentFilter] = useState<FilterType>(FILTER_ALL);
   const [tasks, setTasks] = useState<TaskItem[]>(tasksList);
-
+  const { theme } = useSelector((state: RootState) => state.theme);
   useEffect(() => {
     if (currentFilter === FILTER_ALL) {
       setTasks(tasksList);
@@ -54,7 +57,12 @@ const TaskList: FunctionComponent = () => {
   }, [currentFilter]);
 
   return (
-    <div className={styles.darkTheme}>
+    <div
+      className={classnames({
+        [styles.darkTheme]: theme === THEME_DARK,
+        [styles.lightTheme]: theme === THEME_LIGHT,
+      })}
+    >
       <Container>
         <div className={styles.taskList}>
           {tasks.map((task: TaskItem) => (

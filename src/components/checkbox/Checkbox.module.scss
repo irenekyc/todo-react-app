@@ -21,7 +21,7 @@
     border-radius: 100%;
   }
 
-  &.light-theme {
+  &__light {
     background: $theme-light-text-light;
     &:after {
       background: white;
@@ -31,7 +31,7 @@
     }
   }
 
-  &.dark-theme {
+  &__dark {
     background: $theme-dark-text-light;
     &:after {
       background: $theme-dark-card-bg;
