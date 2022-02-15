@@ -12,19 +12,29 @@ import {
   TODO_THEME_LOCAL_STORATGE,
 } from "../../constants/theme";
 import { updateTheme } from "../../reducer/theme/actions";
+import { ITEM_STATUS_ACTIVE } from "../../constants/item";
+import { TaskItem } from "../../typings/Task";
+import { addTask } from "../../reducer/todo/actions";
+import { v4 as uuidv4 } from "uuid";
 
 const Header: FunctionComponent = () => {
   const [newTask, setNewTask] = useState<string>("");
+  const dispatch = useDispatch();
 
   const checkEnter = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (newTask === "") return;
     if (e.key === "Enter") {
       setNewTask("");
-      // ALso do something
+      const newItem: TaskItem = {
+        id: uuidv4(),
+        state: ITEM_STATUS_ACTIVE,
+        content: newTask,
+      };
+      dispatch(addTask(newItem));
     }
   };
 
   const { theme } = useSelector((state: RootState) => state.theme);
-  const dispatch = useDispatch();
 
   const toggleTheme = () => {
     if (theme === THEME_DARK) {

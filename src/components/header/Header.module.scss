@@ -45,7 +45,7 @@
     .header__taskInput {
       @include item-styles("light");
       input {
-        color: $theme-light-gray-2;
+        color: $theme-light-gray-5;
         &::placeholder {
           color: $theme-light-gray-4;
         }
